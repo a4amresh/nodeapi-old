@@ -1,7 +1,8 @@
 var express = require("express");
 var app = express(); // Asign Express to App
-var port = 4000; // Declare Port
+//var port = 4000; // Declare Port
 var bodyParser = require("body-parser");
+app.set('port', (process.env.PORT || 5000));
 /**
  * Set Statis Path and sert View Engine
  */
@@ -36,6 +37,6 @@ app.use("", index);
 app.use("", users);
 app.use("", tasks);
 
-app.listen(port, function(){
-    console.log("Server connecten on Port:- " + port);
-})
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
